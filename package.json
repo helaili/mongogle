@@ -1,0 +1,21 @@
+{
+"name": "mongogle",
+"version": "0.0.1",
+"description": "A MongoDB Explorer",
+"main": "index.html",
+"private": true,
+"keywords": [
+	"mongodb"
+],
+"window": {
+	"toolbar": true,
+	"resizable": true,
+	"width": 1000,
+	"height": 600,
+	"min_width": 600,
+	"min_height": 400,
+	"position": "center"
+},
+"author": "Alain Hélaïli",
+"license": "MIT"
+}

@@ -1,0 +1,63 @@
+<!-- Nested node template -->
+  <script type="text/ng-template" id="nodes_renderer.html">
+    <div ui-tree-handle class="tree-node">
+      <div class="tree-node-content">
+        <a class="btn btn-default btn-xs" nodrag ng-click="toggle(this);clickNode(node)">
+          <span class="glyphicon tree-glyphicon" ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed}"></span>
+        </a>
+        {{node.name}}
+        <a class="pull-right btn btn-danger btn-xs" ng-if="editModeStatus" nodrag ng-click="removeConnection(node)" style="margin-right: 8px;"><span class="glyphicon glyphicon-remove"></span></a>
+        <a class="pull-right btn btn-primary btn-xs" ng-if="editModeStatus" nodrag ng-click="editConnection(node)"><span class="glyphicon glyphicon-edit"></span></a>
+      </div>
+    </div>
+    <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+      <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'">
+      </li>
+    </ol>
+  </script>
+
+
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">mongogle</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="" ng-click="openNewConnectionDialog()">New Connection</a></li>
+          <li><a href="#">Settings</a></li>
+          <li><a href="#">Help</a></li>
+        </ul>
+        <form class="navbar-form navbar-right">
+          <input type="text" class="form-control" placeholder="Search..." data-cip-id="cIPJQ342845639">
+        </form>
+      </div>
+    </div>
+</nav>
+<div class="row" data-ng-controller="databaseTreeController">
+  <div id="sidebar" class="sidebar" data-ng-init="initTree()">
+        <div ui-tree id="tree1-root">
+            <ol ui-tree-nodes="" ng-model="serverTree">
+              <li ng-repeat="node in serverTree" ui-tree-node ng-include="'nodes_renderer.html'"></li>
+            </ol>
+        </div>
+
+        <div class="tree-footer">
+          <input type="checkbox" data-size="small" data-label-text="Edit"  name="editTreeToggleButton" >
+        </div>
+
+  </div>
+  <div class="main">
+      <div class="col-md-12">
+        <h1 class="page-header">Dashboard!</h1>
+      </div>
+  </div>
+</div>

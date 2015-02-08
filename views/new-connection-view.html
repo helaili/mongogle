@@ -1,0 +1,41 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title">New Connection</h3>
+    </div>
+    <form class="form-horizontal css-form" id="newConnnectionForm">
+        <div class="modal-body">
+            <fieldset>
+                <div class="form-group">
+                    <label class="control-label" for="name">Name : </label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="newConnection.name" id="name" class="form-control" placeholder="friendly connection name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="address">Address : </label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="newConnection.address" id="address" class="form-control" placeholder="server1:port,server2:port" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="rs">Replicaset Name : </label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="newConnection.rs" id="rs" class="form-control" placeholder="name of the eventual replicaset">
+                    </div>
+                </div>
+            </fieldset>
+            <div data-ng-show="error" >
+                <strong class="text-danger" data-ng-bind="error"></strong>
+            </div>
+            <div data-ng-show="success" >
+                <strong class="text-success" data-ng-bind="success"></strong>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <strong data-ng-bind="newConnnectionForm.error"></strong>
+            <button class="btn btn-primary" ng-if="newConnection.address != null" ng-click="test()">Test Connection</button>
+            <button class="btn btn-primary" ng-click="save()">Save Connection</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>
