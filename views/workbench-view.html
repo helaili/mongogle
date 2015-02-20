@@ -1,0 +1,11 @@
+<div role="tabpanel" id="workbench-view.html" ng-controller='workbenchController'>
+  <tabset>
+    <tab ng-repeat="tab in tabs" active="tab.active" disabled="tab.disabled">
+      <tab-heading>
+        {{tab.title}}<button ng-if="tab.active" class="btn btn-xs float-right" ng-click="closeTab()"><span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+      </tab-heading>
+
+      {{tab.content}}
+    </tab>
+  </tabset>
+</div>

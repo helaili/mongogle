@@ -2,16 +2,16 @@
   <script type="text/ng-template" id="nodes_renderer.html">
     <div ui-tree-handle class="tree-node">
       <div class="tree-node-content">
-        <a class="btn btn-default btn-xs" nodrag ng-click="toggle(this);clickNode(node)">
+        <a class="btn btn-default btn-xs tree-node-icon" nodrag ng-click="clickNode(this, node);$scope.$digest()" id="{{node._id}}">
           <span class="glyphicon tree-glyphicon" ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed}"></span>
         </a>
-        {{node.name}}
-        <a class="pull-right btn btn-danger btn-xs" ng-if="editModeStatus" nodrag ng-click="removeConnection(node)" style="margin-right: 8px;"><span class="glyphicon glyphicon-remove"></span></a>
+        <a nodrag class="angular-ui-tree-handle-label" ng-click="clickNode(this, node);$scope.$digest()" style="margin-right: 8px;">{{node.name}}</a>        
+        <a class="pull-right btn btn-danger btn-xs" ng-if="editModeStatus" nodrag ng-click="removeConnection(node)" style="margin-right: 8px;"><span class="glyphicon glyphicon glyphicon-remove"></span></a>
         <a class="pull-right btn btn-primary btn-xs" ng-if="editModeStatus" nodrag ng-click="editConnection(node)"><span class="glyphicon glyphicon-edit"></span></a>
       </div>
     </div>
     <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
-      <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'">
+      <li ng-repeat="node in node.nodes" ui-tree-node  collapsed="true" ng-include="'nodes_renderer.html'">
       </li>
     </ol>
   </script>
@@ -30,9 +30,8 @@
         </button>
         <a class="navbar-brand" href="#">mongogle</a>
       </div>
-      <div id="navbar" class="navbar-collapse collapse">
+      <div id="navbar" class="navbar-collapse collapse" >
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="" ng-click="openNewConnectionDialog()">New Connection</a></li>
           <li><a href="#">Settings</a></li>
           <li><a href="#">Help</a></li>
         </ul>
@@ -44,20 +43,18 @@
 </nav>
 <div class="row" data-ng-controller="databaseTreeController">
   <div id="sidebar" class="sidebar" data-ng-init="initTree()">
-        <div ui-tree id="tree1-root">
-            <ol ui-tree-nodes="" ng-model="serverTree">
-              <li ng-repeat="node in serverTree" ui-tree-node ng-include="'nodes_renderer.html'"></li>
-            </ol>
-        </div>
-
-        <div class="tree-footer">
-          <input type="checkbox" data-size="small" data-label-text="Edit"  name="editTreeToggleButton" >
-        </div>
-
+      <div class="tree-header">
+        <button class="btn btn-primary btn-sm" ng-click="openNewConnectionDialog()"> <span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;New</button>
+        <input type="checkbox" data-size="small" data-label-text="Edit"  name="editTreeToggleButton" >
+      </div>
+      <div ui-tree id="tree1-root" class="tree">
+          <ol ui-tree-nodes="" ng-model="serverTree">
+            <li ng-repeat="node in serverTree" ui-tree-node collapsed="true" ng-include="'nodes_renderer.html'"></li>
+        </ol>
+      </div>
   </div>
-  <div class="main">
-      <div class="col-md-12">
-        <h1 class="page-header">Dashboard!</h1>
+  <div class="workbench">
+      <div class="col-md-12"  ng-include="'views/workbench-view.html'">
       </div>
   </div>
 </div>

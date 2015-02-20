@@ -1,16 +1,7 @@
-/*
- * Base structure
- */
 
-/* Move down content because we have a fixed navbar that is 50px tall */
 body {
-  padding-top: 50px;
+  font-family: Akzidenz,"Helvetica Neue",Helvetica,Arial,sans-serif
 }
-
-
-/*
- * Global add-ons
- */
 
 .sub-header {
   padding-bottom: 10px;
@@ -28,9 +19,9 @@ body {
 .sidebar {
   width: inherit;
   min-width: 300px;
-  padding-top: 10px;
+  padding-top: 60px;
   padding-left: 20px;
-  background-color:#f5f5f5;
+  background-color:#ebebed;
   float: left;
   height:100%;
   position:absolute;
@@ -40,16 +31,12 @@ body {
 
 
 
-/*
- * Main content
- */
-
-.main {
-  padding: 20px;
+.workbench {
+  padding: 60px;
   height:100%;
   overflow:auto;
   margin-top: 0;
-  margin-left: 300px;
+  margin-left: 250px;
 
 }
 
@@ -60,33 +47,64 @@ body {
     margin-right: 8px;
 }
 
+.btn-primary {
+  background: #6ca439;
+  border-color: #6ca439;
+}
+
+.btn-primary:hover {
+  background: #6cb33F;
+  border-color: #6ca439;
+}
+
+
 .angular-ui-tree-handle {
-    color: #7c9eb2;
+    color: #31302F;
     padding: 2px 2px;
 }
 
 .angular-ui-tree-handle:hover {
-    color: #438eb9;
+    color: #6ca439;
     background: #f4f6f7;
 }
+
+
+.angular-ui-tree-handle-label {
+    font-size: 12px;
+    color: #615F5F;
+}
+
+.angular-ui-tree-handle-label:hover  {
+    color: #6ca439;
+    background: #f4f6f7;
+    text-decoration: none;
+}
+
 
 .angular-ui-tree-placeholder {
     background: #f0f9ff;
     
 }
-.tree-glyphicon {
-  color: #7C9EB2;
+
+.tree-node-icon {
+  background-color:#ebebed;
 }
 
-.tree-footer {
-  clear:both;
-  position: absolute;
-  bottom: 65px; 
-  left: 50px;
+.tree-glyphicon {
+  color: #615F5F;
+  background-color:#ebebed;
+}
+
+.tree-glyphicon:hover {
+  color: #6ca439;
+  background-color:#ebebed;
+
+}
+
+.tree-header {
+  padding-bottom: 10px;
+  padding-left: 10px;
 } 
-
-
-
 
 
 .modal-body {

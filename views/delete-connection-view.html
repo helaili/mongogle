@@ -4,10 +4,10 @@
     </div>
     <form class="form-horizontal css-form" id="confirmDeletion">
         <div class="modal-body">
-            <h4>Do you confirm you want to delete the connection {{database.name}}?</h4>
+            <h4>Do you confirm you want to delete the connection {{newConnection.name}}?</h4>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-primary" ng-click="confirmDelete()">Confirm</button>
+            <button class="btn btn-primary" ng-click="delete()">Confirm</button>
             <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
         </div>
     </form>
